@@ -7,11 +7,11 @@ namespace Odev
     interface IGamerDal
     {
 
-        void Register();
-        void Update();
-        void Delete();
+        void Register(Gamer gamer);
+        void Update(Gamer gamer);
+        void Delete(Gamer gamer);
 
-        void IdControl(Gamer gamer);
+        
     }
 
     

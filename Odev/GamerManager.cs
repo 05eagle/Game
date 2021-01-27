@@ -4,24 +4,33 @@ using System.Text;
 
 namespace Odev
 {
-    class GamerManager
+    class GamerManager : IGamerDal
     {
-        public void Register(IGamerDal gamerDal)
+        IUserEState userEState = new UserEStateManager();
+        public GamerManager(UserEStateManager userEStateManager)
         {
-            gamerDal.Register();
+            userEState = userEStateManager;
         }
-        public void Update(IGamerDal gamerDal)
+        public void Delete(Gamer gamer)
         {
-            gamerDal.Update();
+            Console.WriteLine("Kayıt Silindi");
         }
-        public void Delete(IGamerDal gamerDal)
+
+        public void Register(Gamer gamer)
         {
-            gamerDal.Delete();
+            if (userEState.Validation(gamer))
+            {
+                Console.WriteLine("Başarılı");
+            }
+            else
+            {
+                Console.WriteLine("Başarısız");
+            }
         }
-        
-        public void UserCheck(IGamerDal gamerDal,Gamer gamer)
+
+        public void Update(Gamer gamer)
         {
-            gamerDal.IdControl(gamer);
+            Console.WriteLine("Kayıt Güncellendi");
         }
     }
 }

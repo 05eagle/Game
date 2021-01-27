@@ -13,7 +13,7 @@ namespace Odev
             gamer1.FirstName = "Kemal";
             gamer1.LastName = "Kartal";
             gamer1.NickName = "deneme";
-            gamer1.TcNo = "111111111";
+            gamer1.TcNo = "11111111111";
             gamer1.Date = 1995;
 
             gamer1.Password = 1234;
@@ -28,11 +28,12 @@ namespace Odev
             gamer2.Date = 2000;
             gamer2.Password = 12345;
 
-            GamerManager gamerManager = new GamerManager();
-            gamerManager.UserCheck(new SqlUserService(), gamer2);
-            gamerManager.Register(new SqlUserService());
-            gamerManager.Update(new MySqlUserService());
-            gamerManager.Delete(new SqlUserService());
+            GamerManager gamerManager = new GamerManager(new UserEStateManager());
+
+            gamerManager.Register(gamer1);
+            gamerManager.Register(gamer2);
+            gamerManager.Update(gamer1);
+            gamerManager.Delete(gamer2);
 
 
 
